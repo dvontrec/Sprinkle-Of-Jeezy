@@ -2,6 +2,19 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 
+//		INDEX
+router.get("/", function(req, res){
+	//finds all quotes in the database
+	db.Quote.find({}, function(err, allQuotes){
+		if(err){res.send(err);}
+		else
+		{
+			//sends all events in the database as jason
+			res.json(allQuotes);
+		}
+	})
+}); 
+
 //		CREATE
 router.post("/", function(req, res){
 	db.Quote.create(req.body, function(err, newQuote){
@@ -13,24 +26,29 @@ router.post("/", function(req, res){
 			console.log("Quote Created");
 		}
 	})
-})
+});
 //		READ
-router.get("/", function(req, res){
-	//finds all quotes in the database
-	db.Quote.find({}, function(err, allQuotes){
-		if(err){res.send(err);}
-		else
-		{
-			//sends all events in the database as jason
-			res.json(allQuotes);
-		}
+router.get("/:id", function(req, res){
+	//finds the specified quote
+	db.Quote.findById(req.params.id, function(err, quote){
+		//responds with a json object
+		res.json(quote)
 	})
 })
 
-//			*TODO*
-//		EDIT *No need to edit now, but will program last*
-
 //		UPDATE
+router.put("/:id", function(req, res){
+	//finds the quote in the database by the id
+	db.Quote.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, updatedQuote){
+		//if there is an error
+		if(err){res.send(err);}
+		else
+		{
+			//responds with the updated quote
+			res.json(updatedQuote)
+		}
+	})
+});
 
 //		DELETE
 router.delete("/:id", function(req, res){
@@ -44,5 +62,5 @@ router.delete("/:id", function(req, res){
 			res.json({message: "Quote Deleted"});
 		}
 	})
-})
+});
 module.exports = router;
