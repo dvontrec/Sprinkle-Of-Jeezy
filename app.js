@@ -2,21 +2,28 @@
 //		Basic Variables
 //********************************
 var express = require("express");
-var app = express()
+var bodyParser = require("body-parser");
+var quoteRoutes = require("./routes/quotes");
 var port = 3000 || process.env.PORT;
+var app = express();
+
+//tells application what packages to use
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 
 //********************************
 //		Routes
 //********************************
+//use routes with specific path
+app.use("/api/quotes", quoteRoutes);
+
 //index route
 app.get("/", function(req, res){
 	//send home page as text
 	res.send("Home Page")
 });
-//index api page
-app.get("/api", function(req, res){
-	res.send({"name":"Works"})
-})
+
 
 
 //********************************

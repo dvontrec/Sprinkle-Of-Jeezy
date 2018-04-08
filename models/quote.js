@@ -10,12 +10,12 @@ var quoteSchema = mongoose.Schema({
 	quote: {
 		type: String,
 		required: "Cannot leave Quote Blank"
-	}
+	},
 	//the Artists name will be saved as a string
 	artist: {
 		type: String,
 		required: "Cannot leave Artist Blank"
-	}
+	},
 	//the song will be saved as a string
 	song: {
 		type: String,
