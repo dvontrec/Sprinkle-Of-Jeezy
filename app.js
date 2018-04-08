@@ -1,9 +1,9 @@
 //********************************
 //		Basic Variables
 //********************************
-const express = require("express");
-const app = express()
-const port = 3000 || process.env.PORT;
+var express = require("express");
+var app = express()
+var port = 3000 || process.env.PORT;
 
 //********************************
 //		Routes
@@ -23,5 +23,5 @@ app.get("/api", function(req, res){
 //		Add listener
 //********************************
 app.listen(port, function(){
-	console.log("sprinkling");
+	console.log("sprinkling on port " + port);
 })

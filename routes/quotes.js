@@ -1,14 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const db = require("../models");
+var express = require("express");
+var router = express.Router();
+var db = require("../models");
 
 //		CREATE
 router.post("/", function(req, res){
 	db.Quote.create(req.body, function(err, newQuote){
-		if(err){res.send(err);}
+		if(err){
+			res.send("broken here");
+		}
 		else{
+			res.status(201).json(newToDo);
 			console.log("Quote Created");
-			res.send(newQuote);
 		}
 	})
 })

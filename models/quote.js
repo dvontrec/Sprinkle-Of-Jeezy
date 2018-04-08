@@ -1,30 +1,30 @@
 //************************
 //			Qoute Model
 //************************
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
 
 //creates a quote Schema
-const quoteSchema = mongoose.Schema({
+var quoteSchema = mongoose.Schema({
 	//the Quote will be a string
-	Quote: {
+	quote: {
 		type: String,
 		required: "Cannot leave Quote Blank"
 	}
 	//the Artists name will be saved as a string
-	Artist: {
+	artist: {
 		type: String,
 		required: "Cannot leave Artist Blank"
 	}
 	//the song will be saved as a string
-	Song: {
+	song: {
 		type: String,
 		required: "Cannot leave Song Blank"
 	} //may change to link.
 })
 
 //turns the schema to a model
-const Quote = mongoose.model("Quote", quoteSchema);
+var Quote = mongoose.model("Quote", quoteSchema);
 
 //exports the Quote model
 module.exports = Quote;
