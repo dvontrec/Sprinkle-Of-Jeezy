@@ -26,8 +26,23 @@ router.get("/", function(req, res){
 		}
 	})
 })
-//		EDIT
-//		UPDATE
-//		DELETE
 
+//			*TODO*
+//		EDIT *No need to edit now, but will program last*
+
+//		UPDATE
+
+//		DELETE
+router.delete("/:id", function(req, res){
+	//finds the qupte by the ID in the request
+	db.Quote.remove({_id: req.params.id}, function(err){
+		//if there is an error respond with the error
+		if(err){res.send(err);}
+		else
+		{
+			//send the message to let the user know that the qoute was deleted.  
+			res.json({message: "Quote Deleted"});
+		}
+	})
+})
 module.exports = router;
