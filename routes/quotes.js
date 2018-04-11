@@ -36,7 +36,7 @@ router.get("/:id", function(req, res){
 	//finds the specified quote
 	db.Quote.findById(req.params.id, function(err, quote){
 		//responds with a json object
-		res.json(quote)
+		res.json(quote);
 	})
 })
 
@@ -49,7 +49,7 @@ router.put(gPut, function(req, res){
 		else
 		{
 			//responds with the updated quote
-			res.json(updatedQuote)
+			res.json(updatedQuote);
 		}
 	})
 });
