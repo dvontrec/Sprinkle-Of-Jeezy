@@ -4,7 +4,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var quoteRoutes = require("./routes/quotes");
-var port = process.env.PORT;
 var app = express();
 
 //tells application what packages to use
@@ -29,6 +28,6 @@ app.get("/", function(req, res){
 //********************************
 //		Add listener
 //********************************
-app.listen(port, function(){
-	console.log("sprinkling on port " + port);
+app.listen(process.env.PORT, function(){
+	console.log("sprinkling on port " + process.env.PORT);
 })
