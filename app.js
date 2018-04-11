@@ -23,6 +23,11 @@ app.get("/", function(req, res){
 	res.send("Home Page")
 });
 
+//catch all
+app.get("/*", function(req, res){
+	res.send("You lost?");
+})
+
 
 
 //********************************
