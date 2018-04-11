@@ -20,7 +20,7 @@ router.get("/", function(req, res){
 }); 
 
 //		CREATE
-router.post("/", function(req, res){
+router.post(gPost, function(req, res){
 	db.Quote.create(req.body, function(err, newQuote){
 		if(err){
 			res.send(err);
@@ -41,7 +41,7 @@ router.get("/:id", function(req, res){
 })
 
 //		UPDATE
-router.put("/:id", function(req, res){
+router.put(gPost, function(req, res){
 	//finds the quote in the database by the id
 	db.Quote.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, updatedQuote){
 		//if there is an error
@@ -55,7 +55,7 @@ router.put("/:id", function(req, res){
 });
 
 //		DELETE
-router.delete("/:id", function(req, res){
+router.delete(gDEL, function(req, res){
 	//finds the qupte by the ID in the request
 	db.Quote.remove({_id: req.params.id}, function(err){
 		//if there is an error respond with the error
