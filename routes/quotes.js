@@ -1,4 +1,5 @@
 var express = require("express");
+var cors = require(cors);
 var router = express.Router();
 var db = require("../models");
 const gPost = process.env.SECRETPOST;

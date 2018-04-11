@@ -8,7 +8,7 @@ var cors = require("cors");
 var app = express();
 
 //tells application what packages to use
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
