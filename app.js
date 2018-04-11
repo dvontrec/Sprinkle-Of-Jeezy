@@ -20,13 +20,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use("/api/quotes", quoteRoutes);
 
 //index route
-app.get("/", function(req, res){
+app.get("/", function(req, res, next){
 	//send home page as text
 	res.send("Home Page")
 });
 
 //catch all
-app.get("/*", function(req, res){
+app.get("/*", function(req, res, next){
 	res.send("You lost?");
 })
 

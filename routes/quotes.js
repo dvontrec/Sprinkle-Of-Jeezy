@@ -8,7 +8,7 @@ const gDEL = process.env.SECRETDELETE + "/:id/";
 
 
 //		INDEX
-router.get("/", function(req, res){
+router.get("/", function(req, res, next){
 	//finds all quotes in the database
 	db.Quote.find({}, function(err, allQuotes){
 		if(err){res.send(err);}
@@ -21,7 +21,7 @@ router.get("/", function(req, res){
 }); 
 
 //		CREATE
-router.post(gPost, function(req, res){
+router.post(gPost, function(req, res, next){
 	db.Quote.create(req.body, function(err, newQuote){
 		if(err){
 			res.send(err);
@@ -33,7 +33,7 @@ router.post(gPost, function(req, res){
 	})
 });
 //		READ
-router.get("/:id", function(req, res){
+router.get("/:id", function(req, res, next){
 	//finds the specified quote
 	db.Quote.findById(req.params.id, function(err, quote){
 		//responds with a json object
@@ -42,7 +42,7 @@ router.get("/:id", function(req, res){
 })
 
 //		UPDATE
-router.put(gPost, function(req, res){
+router.put(gPost, function(req, res, next){
 	//finds the quote in the database by the id
 	db.Quote.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, updatedQuote){
 		//if there is an error
@@ -56,7 +56,7 @@ router.put(gPost, function(req, res){
 });
 
 //		DELETE
-router.delete(gDEL, function(req, res){
+router.delete(gDEL, function(req, res, next){
 	//finds the qupte by the ID in the request
 	db.Quote.remove({_id: req.params.id}, function(err){
 		//if there is an error respond with the error
