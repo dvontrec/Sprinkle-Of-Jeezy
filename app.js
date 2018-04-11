@@ -4,11 +4,22 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var quoteRoutes = require("./routes/quotes");
-var cors = require("cors");
 var app = express();
 
 //tells application what packages to use
-app.use(cors());
+//setup cors
+app.use((req, res, next) =>
+	{
+		res.header("Access-Control-Allow-Origin", "*")  //Sets the header for all(*) changing second arg can ensure other web pages cant access api
+		res.header("Access-Control-Allow-Headers", "*")  //defines headers that can be set
+		//checks request method
+		if(req.method === "OPTIONS") //PUT/POST
+		{
+			res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE GET") //all http words the api supports
+			return res.status(200),json({});  //tells the route it is successful with those options
+		}
+		next(); //calls next function
+	});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
