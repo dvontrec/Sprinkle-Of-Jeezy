@@ -13,3 +13,4 @@ mongoose.Promise = Promise;
 
 //sends out the Qoute model to any file accessing this index file
 module.exports.Quote = require("./quote");
+module.exports.User = require("./user");
