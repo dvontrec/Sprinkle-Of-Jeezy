@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var passportLocalMongoose = require("passport-local-mongoose")
 //creates a model for the users
-var userSchema  = mongoose.userSchema(
+var userSchema  = new mongoose.Schema(
 	{
 		username: String,
 		Password: String,

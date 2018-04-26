@@ -7,6 +7,8 @@ var quoteRoutes = require("./routes/quotes");
 var app = express();
 
 //tells application what packages to use
+//tells app to pull files from public directory
+app.use(express.static(__dirname + "/public" ))
 //setup cors
 app.use((req, res, next) =>
 	{
@@ -23,6 +25,9 @@ app.use((req, res, next) =>
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+//sets view engine to ejs
+app.set("view engine", "ejs")
+
 
 //********************************
 //		Routes
@@ -33,7 +38,7 @@ app.use("/api/quotes", quoteRoutes);
 //index route
 app.get("/", function(req, res, next){
 	//send home page as text
-	res.send("Home Page")
+	res.render("index")
 });
 
 //catch all
