@@ -4,11 +4,14 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var quoteRoutes = require("./routes/quotes");
+var methodOverride = require("method-override");
 var app = express();
 
 //tells application what packages to use
 //tells app to pull files from public directory
 app.use(express.static(__dirname + "/public" ))
+//tells app to use _method for method-override
+app.use(methodOverride("_method"));
 //setup cors
 app.use((req, res, next) =>
 	{
@@ -40,6 +43,11 @@ app.get("/", function(req, res, next){
 	//send home page as text
 	res.render("index")
 });
+//create quote route
+app.get("/quotecreator", function(req, res)
+{
+	res.render("quoteform")
+})
 
 //catch all
 app.get("/*", function(req, res, next){
