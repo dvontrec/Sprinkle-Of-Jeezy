@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models");
-const gPost = process.env.SECRETPOST;
-const gPut = process.env.SECRETPUT + "/:id/";
-const gDEL = process.env.SECRETDELETE + "/:id/";
+const gPost = "/" + process.env.SECRETPOST;
+const gPut = "/" + process.env.SECRETPUT + "/:id/";
+const gDEL = "/" + process.env.SECRETDELETE + "/:id/";
 
 
 //		INDEX
@@ -20,7 +20,7 @@ router.get("/", function(req, res){
 }); 
 
 //		CREATE
-router.post("/", function(req, res){
+router.post(gPost, function(req, res){
 	console.log(req.body.artist)
 	db.Quote.create(req.body, function(err, newQuote){
 		if(err){
@@ -42,7 +42,7 @@ router.get("/:id", function(req, res){
 })
 
 //		UPDATE
-router.put(gPost, function(req, res){
+router.put(gPut, function(req, res){
 	//finds the quote in the database by the id
 	db.Quote.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, updatedQuote){
 		//if there is an error

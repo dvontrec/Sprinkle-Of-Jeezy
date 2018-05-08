@@ -2,7 +2,11 @@
 //		Basic Variables
 //********************************
 var express = require("express");
+var passport = require("passport");
 var bodyParser = require("body-parser");
+var User = require("./models/user");
+var LocalStrategy = require("passport-local");
+var passportlocalMongoose = require("passport-local-mongoose");
 var quoteRoutes = require("./routes/quotes");
 var methodOverride = require("method-override");
 var app = express();
@@ -12,6 +16,13 @@ var app = express();
 app.use(express.static(__dirname + "/public" ))
 //tells app to use _method for method-override
 app.use(methodOverride("_method"));
+//tells app to use express session
+app.use(require("express-session")({
+	//secret is used to encode and decode the sessions
+	secret: process.env.SECRET,
+	resave: false, 
+	saveUninitialized: false
+}));
 //setup cors
 app.use((req, res, next) =>
 	{
@@ -30,6 +41,14 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //sets view engine to ejs
 app.set("view engine", "ejs")
+//tells app to use passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//encodes data and puts it in the session
+passport.serializeUser(User.serializeUser());
+//reads the session and unencodes the data
+passport.deserializeUser(User.deserializeUser());
 
 
 //********************************

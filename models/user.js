@@ -4,9 +4,9 @@ var passportLocalMongoose = require("passport-local-mongoose")
 var userSchema  = new mongoose.Schema(
 	{
 		username: String,
-		Password: String,
-		isAdmin: Boolean
+		password: String
 	});
 
-userSchema.plugin(passportLocalMongoose);
+//adds methods to user schema for authentication.  
+userSchema.plugin(passportLocalMongoose);  //adds user serializing methods
 module.exports = mongoose.model("User", userSchema);

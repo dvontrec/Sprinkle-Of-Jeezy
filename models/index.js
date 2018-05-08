@@ -1,6 +1,6 @@
 //connect to mongoose
 var mongoose = require("mongoose");
-const url = process.env.DATABASEURL;  //set up by using (export DATABASEURL=(enter url here)) in the terminal
+const url = process.env.DATABASEURL || "mongodb://localhost/sprinkle";  //set up by using (export DATABASEURL=(enter url here)) in the terminal
 
 //allow debugging
 mongoose.set("debug", true);
