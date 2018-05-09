@@ -5,7 +5,7 @@ var express = require("express");
 var passport = require("passport");
 var bodyParser = require("body-parser");
 var User = require("./models/user");
-var LocalStrategy = require("passport-local");
+var localStrategy = require("passport-local");
 var passportlocalMongoose = require("passport-local-mongoose");
 var quoteRoutes = require("./routes/quotes");
 var methodOverride = require("method-override");
@@ -44,7 +44,8 @@ app.set("view engine", "ejs")
 //tells app to use passport
 app.use(passport.initialize());
 app.use(passport.session());
-
+//creates a new local strategy
+passport.use(new localStrategy(User.authenticate()));
 //encodes data and puts it in the session
 passport.serializeUser(User.serializeUser());
 //reads the session and unencodes the data
@@ -67,6 +68,41 @@ app.get("/quotecreator", function(req, res)
 {
 	res.render("quoteform")
 })
+//			AUTH routes
+//=================================
+//register route
+app.get("/register", function(req, res){
+	res.render("register");
+});
+//register function
+app.post("/register", function(req, res)
+{
+	//saves the user from the registration form
+	var newUser = new User({username:req.body.username});
+	User.register(newUser, req.body.password, function(err, nUser)
+	{
+		if(err){return res.send(err)}
+		else
+		{
+			passport.authenticate("local")(req, res, function()
+			{
+				res.redirect("/quotecreator")
+			})
+		}
+	})
+
+});
+//login route
+app.get("/login", function(req, res){
+	res.render("login");
+});
+//login function
+app.post("/login", passport.authenticate("local", 
+	{
+		successRedirect: "/quotecreator",
+		failureRedirect: "/login"
+	}), function(req, res)
+	{});
 
 //catch all
 app.get("/*", function(req, res, next){
