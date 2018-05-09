@@ -64,7 +64,8 @@ app.get("/", function(req, res, next){
 	res.render("index")
 });
 //create quote route
-app.get("/quotecreator", function(req, res)
+//checks to see if session is currently logged in.
+app.get("/quotecreator", isLoggedIn, function(req, res)
 {
 	res.render("quoteform")
 })
@@ -118,6 +119,22 @@ app.get("/logout", function(req, res)
 	res.redirect("/")
 });
 
+//********************************
+//		MiddleWare
+//********************************
+//checks to see if the current session is logged in
+function isLoggedIn(req, res, next)
+{
+	//checks to see if the request is from an authenticated user
+	if(req.isAuthenticated())
+	{
+		//moves on to the next function.  usually the callback
+		return next(); 
+	}
+
+	//if the user is not authenticated we will continue.  No need for an else because we return if conditions are met
+	res.redirect("/login");
+}
 
 
 //********************************
