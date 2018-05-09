@@ -99,7 +99,9 @@ app.get("/login", function(req, res){
 //login function
 app.post("/login", passport.authenticate("local", 
 	{
+		//if the user successfully logs in redirect to the quote creator route
 		successRedirect: "/quotecreator",
+		//if the login is unsuccessfull redirect to the login route
 		failureRedirect: "/login"
 	}), function(req, res)
 	{});
@@ -108,6 +110,13 @@ app.post("/login", passport.authenticate("local",
 app.get("/*", function(req, res, next){
 	res.send("You lost?");
 })
+
+//logout route
+app.get("/logout", function(req, res)
+{
+	req.logout();
+	res.redirect("/")
+});
 
 
 
