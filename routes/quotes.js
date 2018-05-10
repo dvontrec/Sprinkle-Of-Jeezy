@@ -22,7 +22,17 @@ router.get("/", function(req, res){
 
 router.get("/asadmin", middleware.isAdmin, function(req, res)
 {
-	res.render("adminQuotes");
+	db.Quote.find({}, function(err, allQuotes)
+	{
+		if(err)
+		{
+			console.log(err);
+		}
+		else
+		{
+			res.render("adminQuotes", {quotes: allQuotes});
+		}
+	});
 }) 
 
 //		CREATE
