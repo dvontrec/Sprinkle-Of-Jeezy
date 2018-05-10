@@ -1,3 +1,10 @@
 Random Rap Quote Generator
+******************************************************************
+						Description
+******************************************************************
 
-This is a parody API that spits out the rap quotes from a mongodb database
+This is a parody API that spits out the rap quotes from a mongodb database. 
+
+******************************************************************
+						How to run
+******************************************************************

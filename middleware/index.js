@@ -1,5 +1,5 @@
 //creates an object to store the middleware functions
-var middlewareObj = {}
+var middlewareObj = {};
 
 //********************************
 //		MiddleWare
