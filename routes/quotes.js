@@ -42,9 +42,9 @@ router.post(gPost, function(req, res){
 		if(err){
 			res.send(err);
 		}
-		else{
-			res.status(201).json(newQuote);
-			console.log("Quote Created");
+		else
+		{
+			res.redirect("/api/quotes/asadmin");
 		}
 	})
 });

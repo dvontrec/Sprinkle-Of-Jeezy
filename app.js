@@ -73,7 +73,7 @@ app.get("/quotecreator", middleware.isLoggedIn, function(req, res)
 //			AUTH routes
 //=================================
 //register route
-app.get("/register", function(req, res){
+app.get("/register", middleware.isAdmin, function(req, res){
 	res.render("register");
 });
 //register function
