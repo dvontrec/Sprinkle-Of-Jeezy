@@ -9,6 +9,7 @@ var localStrategy = require("passport-local");
 var passportlocalMongoose = require("passport-local-mongoose");
 var quoteRoutes = require("./routes/quotes");
 var methodOverride = require("method-override");
+var middleware = require("./middleware");
 var app = express();
 
 //tells application what packages to use
@@ -65,7 +66,7 @@ app.get("/", function(req, res, next){
 });
 //create quote route
 //checks to see if session is currently logged in.
-app.get("/quotecreator", isLoggedIn, function(req, res)
+app.get("/quotecreator", middleware.isLoggedIn, function(req, res)
 {
 	res.render("quoteform")
 })
@@ -101,7 +102,7 @@ app.get("/login", function(req, res){
 app.post("/login", passport.authenticate("local", 
 	{
 		//if the user successfully logs in redirect to the quote creator route
-		successRedirect: "/quotecreator",
+		successRedirect: "/",
 		//if the login is unsuccessfull redirect to the login route
 		failureRedirect: "/login"
 	}), function(req, res)
@@ -119,22 +120,6 @@ app.get("/logout", function(req, res)
 	res.redirect("/")
 });
 
-//********************************
-//		MiddleWare
-//********************************
-//checks to see if the current session is logged in
-function isLoggedIn(req, res, next)
-{
-	//checks to see if the request is from an authenticated user
-	if(req.isAuthenticated())
-	{
-		//moves on to the next function.  usually the callback
-		return next(); 
-	}
-
-	//if the user is not authenticated we will continue.  No need for an else because we return if conditions are met
-	res.redirect("/login");
-}
 
 
 //********************************

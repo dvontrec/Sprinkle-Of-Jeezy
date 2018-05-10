@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models");
+var middleware = require("../middleware");
 const gPost = "/" + process.env.SECRETPOST;
 const gPut = "/" + process.env.SECRETPUT + "/:id/";
 const gDEL = "/" + process.env.SECRETDELETE + "/:id/";
@@ -17,7 +18,12 @@ router.get("/", function(req, res){
 			res.json(allQuotes);
 		}
 	})
-}); 
+});
+
+router.get("/asadmin", middleware.isAdmin, function(req, res)
+{
+	res.render("adminQuotes");
+}) 
 
 //		CREATE
 router.post(gPost, function(req, res){
