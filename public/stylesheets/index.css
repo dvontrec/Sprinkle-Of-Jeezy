@@ -1,3 +1,30 @@
 body{
-	background-color: teal;
+	background-color: yellow;
+	font-size: 30px;
+}
+@media all and (max-width:800px)
+{
+	body
+	{
+		background-color: #ccc;
+		font-size: 18px;
+	}
+
+	.btn-group
+	{
+		display: flex;
+		flex-direction: column;
+		width: 75%;
+		margin: 0 12.5%;
+		height:150px;
+	}
+
+	.btn-group button
+	{
+		border: red solid 3px;
+		border-radius: 30px;
+		width: 100%;
+		height: 50%;
+		margin: 3px;
+	}
 }

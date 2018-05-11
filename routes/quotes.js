@@ -11,6 +11,7 @@ const gDEL = "/" + process.env.SECRETDELETE + "/:id/";
 router.get("/", function(req, res){
 	//finds all quotes in the database
 	db.Quote.find({}, function(err, allQuotes){
+		//if there is an error send the error 
 		if(err){res.send(err);}
 		else
 		{

@@ -1,3 +1,5 @@
+<% include ./partials/header %>
+
 <form method="POST" action="/api/quotes/<%= process.env.SECRETPOST %>">
 	<h1>Create a quote</h1>
 	<input type="text" name="quote" placeholder="quote">
@@ -6,3 +8,5 @@
 	<button type="submit">enter</button>
 	
 </form>
+
+<% include ./partials/footer %>
