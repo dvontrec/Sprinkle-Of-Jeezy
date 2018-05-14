@@ -2,6 +2,7 @@
 //		Basic Variables
 //********************************
 var express = require("express");
+const port = process.env.PORT || 8000;
 var passport = require("passport");
 var bodyParser = require("body-parser");
 var User = require("./models/user");
@@ -14,7 +15,9 @@ var app = express();
 
 //tells application what packages to use
 //tells app to pull files from public directory
-app.use(express.static(__dirname + "/public" ))
+app.use(express.static(__dirname + "/public" ));
+app.use(express.static(__dirname + "/views" ));
+
 //tells app to use _method for method-override
 app.use(methodOverride("_method"));
 //tells app to use express session
@@ -70,6 +73,14 @@ app.get("/quotecreator", middleware.isLoggedIn, function(req, res)
 {
 	res.render("quoteform")
 })
+
+//random quote route
+app.get("/randomquote", function(req, res)
+{
+	res.sendFile(__dirname + "/views/randomQuote.html");
+})
+
+//=================================
 //			AUTH routes
 //=================================
 //register route
@@ -125,6 +136,6 @@ app.get("/logout", function(req, res)
 //********************************
 //		Add listener
 //********************************
-app.listen(process.env.PORT, function(){
+app.listen(port, function(){
 	console.log("sprinkling on port " + process.env.PORT);
 })
