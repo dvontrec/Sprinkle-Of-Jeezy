@@ -9,6 +9,7 @@ var User = require("./models/user");
 var localStrategy = require("passport-local");
 var passportlocalMongoose = require("passport-local-mongoose");
 var quoteRoutes = require("./routes/quotes");
+const indexRoutes = require("./routes/index");
 var methodOverride = require("method-override");
 var middleware = require("./middleware");
 var app = express();
@@ -61,75 +62,8 @@ passport.deserializeUser(User.deserializeUser());
 //********************************
 //use routes with specific path
 app.use("/api/quotes", quoteRoutes);
+app.use("/", indexRoutes)
 
-//index route
-app.get("/", function(req, res, next){
-	//send home page as text
-	res.render("index")
-});
-//create quote route
-//checks to see if session is currently logged in.
-app.get("/quotecreator", middleware.isLoggedIn, function(req, res)
-{
-	res.render("quoteform")
-})
-
-//random quote route
-app.get("/randomquote", function(req, res)
-{
-	res.sendFile(__dirname + "/views/randomQuote.html");
-})
-
-//=================================
-//			AUTH routes
-//=================================
-//register route
-app.get("/register", middleware.isAdmin, function(req, res){
-	res.render("register");
-});
-//register function
-app.post("/register", function(req, res)
-{
-	//saves the user from the registration form
-	var newUser = new User({username:req.body.username});
-	User.register(newUser, req.body.password, function(err, nUser)
-	{
-		if(err){return res.send(err)}
-		else
-		{
-			passport.authenticate("local")(req, res, function()
-			{
-				res.redirect("/quotecreator")
-			})
-		}
-	})
-
-});
-//login route
-app.get("/login", function(req, res){
-	res.render("login");
-});
-//login function
-app.post("/login", passport.authenticate("local", 
-	{
-		//if the user successfully logs in redirect to the quote creator route
-		successRedirect: "/",
-		//if the login is unsuccessfull redirect to the login route
-		failureRedirect: "/login"
-	}), function(req, res)
-	{});
-
-//catch all
-app.get("/*", function(req, res, next){
-	res.send("You lost?");
-})
-
-//logout route
-app.get("/logout", function(req, res)
-{
-	req.logout();
-	res.redirect("/")
-});
 
 
 
