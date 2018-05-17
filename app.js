@@ -1,18 +1,19 @@
 //********************************
 //		Basic Variables
 //********************************
-var express = require("express");
+const express = require("express");
 const port = process.env.PORT || 8000;
-var passport = require("passport");
-var bodyParser = require("body-parser");
-var User = require("./models/user");
-var localStrategy = require("passport-local");
-var passportlocalMongoose = require("passport-local-mongoose");
-var quoteRoutes = require("./routes/quotes");
+const passport = require("passport");
+const bodyParser = require("body-parser");
+const User = require("./models/user");
+const localStrategy = require("passport-local");
+const passportlocalMongoose = require("passport-local-mongoose");
+const quoteRoutes = require("./routes/quotes");
+const authRoutes = require('./routes/auth');
 const indexRoutes = require("./routes/index");
-var methodOverride = require("method-override");
-var middleware = require("./middleware");
-var app = express();
+const methodOverride = require("method-override");
+const middleware = require("./middleware");
+const app = express();
 
 //tells application what packages to use
 //tells app to pull files from public directory
@@ -62,7 +63,9 @@ passport.deserializeUser(User.deserializeUser());
 //********************************
 //use routes with specific path
 app.use("/api/quotes", quoteRoutes);
-app.use("/", indexRoutes)
+app.use("/", authRoutes);
+app.use("/", indexRoutes);
+
 
 
 

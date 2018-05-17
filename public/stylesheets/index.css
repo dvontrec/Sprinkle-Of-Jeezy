@@ -1,3 +1,108 @@
+body
+{
+	margin: 0;
+}
+
+header
+{
+	background-color: #ccc;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	padding: 0 15px;
+}
+
+header h1
+{
+	text-align: center
+}
+
+header li
+{
+	list-style: none;
+}
+
+header a
+{
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+header a:hover
+{
+	opacity: 1
+}
+
+header nav
+{
+	display: flex
+}
+
+header nav li
+{
+	margin: 0 15px;
+}
+
+header nav li:first-child
+{
+	margin-left:0;
+}
+
+header nav li:left-child
+{
+	margin-right: 0;
+}
+
+@media (max-width: 1000px)
+{
+	header
+	{
+		padding: 20px 50px;
+	}
+}
+
+@media (max-width: 700px)
+{
+	header
+	{
+		flex-direction: column;
+	}
+	header
+	{
+		margin-bottom: 15px;
+	}
+
+	body
+	{
+		background-color: #ccc;
+		font-size: 18px;
+	}
+
+	.btn-group
+	{
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		width: 75%;
+		margin: auto;
+		height:150px;
+	}
+
+	.btn-group button
+	{
+		border: red solid 3px;
+		border-radius: 30px;
+		width: 100%;
+		flex-grow: 1;
+		margin: 3px;
+	}
+}
+
+
+
 .index
 {
 	color: blue;
@@ -27,32 +132,4 @@
 	padding-top: 12.5%;
 	height: 100%;
 	width: 100%;
-}
-
-@media all and (max-width:800px)
-{
-	body
-	{
-		background-color: #ccc;
-		font-size: 18px;
-	}
-
-	.btn-group
-	{
-		display: flex;
-		flex-wrap: nowrap;
-		flex-direction: column;
-		width: 75%;
-		margin: auto;
-		height:150px;
-	}
-
-	.btn-group button
-	{
-		border: red solid 3px;
-		border-radius: 30px;
-		width: 100%;
-		flex-grow: 1;
-		margin: 3px;
-	}
 }
