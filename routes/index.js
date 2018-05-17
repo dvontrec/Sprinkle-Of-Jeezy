@@ -1,8 +1,11 @@
 const express = require("express");
+//uses the path package to concatinate path files easier
+const path = require('path');
 const router = express.Router();
 const passport = require("passport");
 const User = require("../models/user");
 const middleware = require("../middleware");
+
 
 //index route
 router.get("/", function(req, res, next){
@@ -19,7 +22,9 @@ router.get("/quotecreator", middleware.isLoggedIn, function(req, res)
 //random quote route
 router.get("/randomquote", function(req, res)
 {
-	res.sendFile(__dirname + "/views/randomQuote.html");
+	//makes a variable that stores the path to the random quote html
+	const randomQuoteLocation = path.join(__dirname, "../views/randomQuote.html")
+	res.sendFile(randomQuoteLocation);
 });
 
 router.get("/submitQuote", function(req, res)
