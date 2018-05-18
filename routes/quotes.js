@@ -53,8 +53,7 @@ router.post("/", middleware.isAdmin, function(req, res){
 router.get("/:id", middleware.isAdmin, function(req, res){
 	//finds the specified quote
 	db.Quote.findById(req.params.id, function(err, quote){
-		//responds with a json object
-		res.json(quote);
+		res.render("editQuote", {quote: quote})
 	})
 })
 
