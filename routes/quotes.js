@@ -50,7 +50,7 @@ router.post("/", middleware.isAdmin, function(req, res){
 	})
 });
 //		READ
-router.get("/:id", function(req, res){
+router.get("/:id", middleware.isAdmin, function(req, res){
 	//finds the specified quote
 	db.Quote.findById(req.params.id, function(err, quote){
 		//responds with a json object

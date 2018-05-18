@@ -3,8 +3,7 @@
 <% quotes.forEach(function(quote){%>
 	<h4><%= quote.quote %></h4>
 	<p>-<%= quote.artist%></p>
-	<button>Edit</button>
-	<button>Delete</button>
+	<button><a href="/api/quotes/<%=quote.id%>">Edit</a></button>
 <% }) %>	
 
 <% include ./partials/footer %>
