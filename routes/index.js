@@ -27,13 +27,6 @@ router.get("/randomquote", function(req, res)
 	res.sendFile(randomQuoteLocation);
 });
 
-router.get("/submitQuote", function(req, res)
-{
-	res.render("quoteSuggester");
-});
-
-
-
 //catch all
 router.get("/*", function(req, res, next){
 	res.send("You lost?");

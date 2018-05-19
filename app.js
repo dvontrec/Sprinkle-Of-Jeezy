@@ -10,6 +10,7 @@ const localStrategy = require("passport-local");
 const passportlocalMongoose = require("passport-local-mongoose");
 const quoteRoutes = require("./routes/quotes");
 const authRoutes = require('./routes/auth');
+const suggestRoutes = require('./routes/suggestions')
 const indexRoutes = require("./routes/index");
 const methodOverride = require("method-override");
 const middleware = require("./middleware");
@@ -64,7 +65,9 @@ passport.deserializeUser(User.deserializeUser());
 //use routes with specific path
 app.use("/api/quotes", quoteRoutes);
 app.use("/", authRoutes);
+app.use("/api/suggestions", suggestRoutes);
 app.use("/", indexRoutes);
+
 
 
 
