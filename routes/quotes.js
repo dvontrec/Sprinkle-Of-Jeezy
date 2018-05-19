@@ -1,10 +1,8 @@
-var express = require("express");
-var router = express.Router();
-var db = require("../models");
-var middleware = require("../middleware");
-const gPost = "/" + process.env.SECRETPOST;
-const gPut = "/" + process.env.SECRETPUT + "/:id/";
-const gDEL = "/" + process.env.SECRETDELETE + "/:id/";
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
+const middleware = require("../middleware");
+
 
 
 //		INDEX
