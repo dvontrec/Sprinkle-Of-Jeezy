@@ -1,6 +1,11 @@
 <% include ./partials/header %>
-	<h2>Quote: <%= quote.quote%></h2>
-	<h2>Artist: <%= quote.artist%></h2>
-	<h2>Song: <%= quote.song%></h2>
-	<button><a href="/api.quotes"></a></button>
+	<form action="/api/quotes/<%= quote._id%>?_method=PUT" method="POST">
+		<input type="text" name="quote" value="<%= quote.quote%>">
+		<input type="text" name="artist" value="<%= quote.artist%>">
+		<input type="text" name="song" value="<%= quote.song%>">
+		<button>Update</button>
+	</form>
+	<form action="/api/quotes/<%= quote.id%>?_method=DELETE" method="POST">
+		<button>delete</button>
+	</form>
 <% include ./partials/footer %>

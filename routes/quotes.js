@@ -58,7 +58,7 @@ router.get("/:id", middleware.isAdmin, function(req, res){
 })
 
 //		UPDATE
-router.put("/", middleware.isAdmin, function(req, res){
+router.put("/:id", middleware.isAdmin, function(req, res){
 	//finds the quote in the database by the id
 	db.Quote.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, updatedQuote){
 		//if there is an error
