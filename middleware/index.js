@@ -18,6 +18,7 @@ middlewareObj.isLoggedIn = function(req, res, next)
 	res.redirect("/login");
 }
 
+//middleware used to see if the user logged in is an admin
 middlewareObj.isAdmin = function(req, res, next)
 {
 	//checks to see if the request is from an authenticated user

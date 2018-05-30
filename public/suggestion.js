@@ -32,6 +32,7 @@ function getXHR()
 //output: Null
 function setForms(data)
 {
+	//loops through each suggestion gathered by the getXHR function and creates a form for confirming or denying them
 	data.forEach(function(suggestion){
 		$('#form-list')
 		.append(`
@@ -46,7 +47,3 @@ function setForms(data)
 	
 }
 
-function formClicked(e)
-{
-	console.log(`${e.innerText()}`);
-}
