@@ -27,6 +27,13 @@ router.get("/randomquote", function(req, res)
 	res.sendFile(randomQuoteLocation);
 });
 
+router.get("/adminSuggestions", middleware.isLoggedIn,  function(req, res)
+{
+	//makes a variable that stores the path to the random quote html
+	const adminSuggestionLocation = path.join(__dirname, "../views/adminSuggestions.html")
+	res.sendFile(adminSuggestionLocation);
+})
+
 //catch all
 router.get("/*", function(req, res, next){
 	res.send("You lost?");

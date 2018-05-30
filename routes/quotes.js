@@ -36,7 +36,6 @@ router.get("/asadmin", middleware.isAdmin, function(req, res)
 
 //		CREATE
 router.post("/", middleware.isAdmin, function(req, res){
-	console.log(req.body.artist)
 	db.Quote.create(req.body, function(err, newQuote){
 		if(err){
 			res.send(err);
