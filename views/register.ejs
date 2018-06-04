@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>Sign up</h1>
-
-	<form action="/register" method="POST">
-		<input type="text" name="username" placeholder="username">
-		<input type="password" name="password" placeholder="password">
-		<button>submit</button>
+<% include ./partials/header %>
+	<h1 class="form-label">Sign up</h1>
+	<form action="/register" method="POST" class="form register-form">
+		<div class="login-form">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input tabindex="1" type="text" name="username" placeholder="username">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input tabindex="2" type="password" name="password" placeholder="password">
+			</div>
+			<div class="form-group">
+				<button tabindex="3">Register</button>
+			</div>
+		</div>
 	</form>
 
 </body>

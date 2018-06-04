@@ -1,11 +1,22 @@
 <% include ./partials/header %>
-	<form action="/api/quotes/<%= quote._id%>?_method=PUT" method="POST">
-		<input type="text" name="quote" value="<%= quote.quote%>">
-		<input type="text" name="artist" value="<%= quote.artist%>">
-		<input type="text" name="song" value="<%= quote.song%>">
-		<button>Update</button>
+	<form action="/api/quotes/<%= quote._id%>?_method=PUT" method="POST" class="quote-form form">
+		<div class="form-group">
+			<label for="quote">Quote</label>
+			<input type="text" name="quote" value="<%= quote.quote%>">
+		</div>
+		<div class="form-group">
+			<label for="artist">Artist</label>
+			<input type="text" name="artist" value="<%= quote.artist%>">
+		</div>
+		<div class="form-group">
+			<label for="song"> Song</label>
+			<input type="text" name="song" value="<%= quote.song%>">
+		</div>
+		<div class="form-group">
+			<button>Update</button>
+		</div>
 	</form>
-	<form action="/api/quotes/<%= quote.id%>?_method=DELETE" method="POST">
+	<form action="/api/quotes/<%= quote.id%>?_method=DELETE" method="POST" class="form delete">
 		<button>delete</button>
 	</form>
 <% include ./partials/footer %>

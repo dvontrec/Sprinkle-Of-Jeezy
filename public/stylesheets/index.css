@@ -1,6 +1,8 @@
 body
 {
 	margin: 0;
+	background-color: rgb(15, 17, 176);
+	color: white;
 }
 
 header
@@ -66,7 +68,6 @@ header nav li:left-child
 
 .index
 {
-	color: blue;
 	text-align: center;
 	font-size: 30px;
 }
@@ -138,8 +139,13 @@ header nav li:left-child
 	margin: 0 12.5%;
 }
 
+.form button{
+	height: 30px;
+	border: none;
+}
+
 .quote-form button{
-	background-color: lightblue;
+	background-color: rgb(56, 184, 143);
 	color: white;
 }
 
@@ -157,6 +163,17 @@ header nav li:left-child
 .login-form button{
 	background-color: rgb(9,270,105);
 	color: white;
+}
+
+.delete button{
+	margin-top: 0;
+	background-color: rgb(173, 65, 19);
+	color: white;
+}
+
+.register-form button{
+	background-color: white;
+	color: rgb(9, 270, 105);
 }
 
 
