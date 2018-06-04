@@ -1,3 +1,9 @@
 body{
 	
 }
+
+#container{
+	width: 70%
+	margin: auto;
+	color: blue;
+}

@@ -1,8 +1,8 @@
 body
 {
 	margin: 0;
-	background-color: rgb(15, 17, 176);
-	color: white;
+	background-color: #ccc;
+	color: rgba(9,9,13,.97);
 }
 
 header
@@ -61,7 +61,7 @@ header nav li:left-child
 footer{
 	position: fixed;
 	min-height: 30px;
-	background-color: black;
+	background-color: rgb(150,150,150);
 	text-align: center;
 	width: 100%;
 	left: 0;
@@ -71,6 +71,11 @@ footer{
 footer a{
 	text-decoration: none;
 	color: white;
+}
+
+#container{
+	margin-bottom: 30px;
+	padding-bottom: 50px;
 }
 
 @media (max-width: 1000px)
@@ -158,6 +163,7 @@ footer a{
 }
 
 .form button{
+	text-transform: uppercase;
 	height: 30px;
 	border: none;
 }
