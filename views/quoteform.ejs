@@ -1,10 +1,19 @@
 <% include ./partials/header %>
 
-<form method="POST" action="/api/quotes/">
-	<h1>Create a quote</h1>
-	<input type="text" name="quote" placeholder="quote">
-	<input type="text" name="artist" placeholder="artist">
-	<input type="text" name="song" placeholder="song">
+<h1 class="form-label">Create quote</h1>
+<form method="POST" action="/api/quotes/" class="quote-form form">
+	<div class="form-group">
+		<label for="qoute">Quote</label>
+		<input type="text" name="quote" placeholder="quote">
+	</div>
+	<div class="form-group">
+		<label for="song">Artist</label>
+		<input type="text" name="artist" placeholder="artist">
+	</div>
+	<div class="form-group">
+		<label for="song">Song</label>
+		<input type="text" name="song" placeholder="song">
+	</div>
 	<button type="submit">enter</button>
 	
 </form>

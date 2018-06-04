@@ -64,45 +64,6 @@ header nav li:left-child
 	}
 }
 
-@media (max-width: 700px)
-{
-	header
-	{
-		flex-direction: column;
-	}
-	header
-	{
-		margin-bottom: 15px;
-	}
-
-	body
-	{
-		background-color: #ccc;
-		font-size: 18px;
-	}
-
-	.btn-group
-	{
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: column;
-		width: 75%;
-		margin: auto;
-		height:150px;
-	}
-
-	.btn-group button
-	{
-		border: red solid 3px;
-		border-radius: 30px;
-		width: 100%;
-		flex-grow: 1;
-		margin: 3px;
-	}
-}
-
-
-
 .index
 {
 	color: blue;
@@ -123,13 +84,81 @@ header nav li:left-child
 {
 	width: 50%;
 	height: 100%;
+	flex-grow: 1;
+	padding: auto;
 }
 
 .btn-group button a
 {
 	text-decoration: none;
 	display: block;
-	padding-top: 12.5%;
+	padding-top: 8%;
 	height: 100%;
 	width: 100%;
 }
+
+
+@media (max-width: 700px)
+{
+	header
+	{
+		flex-direction: column;
+		margin-bottom: 15px;
+	}
+
+	body
+	{
+		background-color: #ccc;
+		font-size: 18px;
+	}
+
+	.btn-group
+	{
+		display: flex;
+		flex-direction: row;
+	}
+
+	.btn-group button
+	{
+		width: 100%;
+	}
+}
+
+
+/*==============================================
+//   FORM Styles
+==============================================*/
+.form-label{
+	text-align: center;
+}
+.form{
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	margin: 0 12.5%;
+}
+
+.quote-form button{
+	background-color: lightblue;
+	color: white;
+}
+
+.form .form-group{
+	width: 100%;
+	height: 50px;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 15px;
+}
+.form label{
+	text-align: center;
+}
+
+.login-form button{
+	background-color: rgb(9,270,105);
+	color: white;
+}
+
+
+
+
