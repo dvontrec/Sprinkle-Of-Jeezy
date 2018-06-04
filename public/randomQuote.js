@@ -20,14 +20,6 @@ function getXHR()
 
 function getQuote(data)
 {
-	//generates a random number between 0(the first index of the data array) and the lendth of the data array
-	var rNum = Math.floor(Math.random()*data.length);
-	var text = data[rNum].quote;
-	var artist = data[rNum].artist;
-	document.getElementById("text").textContent = text;
-	document.getElementById("artist").textContent = artist;
-	console.log(text);
-	return data[rNum]
-	
-	
+	document.getElementById("text").textContent = data.quote;
+	document.getElementById("artist").textContent = data.artist;	
 }

@@ -7,7 +7,7 @@ body
 
 header
 {
-	background-color: #ccc;
+	background-color: #000;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -58,6 +58,21 @@ header nav li:left-child
 	margin-right: 0;
 }
 
+footer{
+	position: fixed;
+	min-height: 30px;
+	background-color: black;
+	text-align: center;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+footer a{
+	text-decoration: none;
+	color: white;
+}
+
 @media (max-width: 1000px)
 {
 	header
@@ -83,6 +98,8 @@ header nav li:left-child
 
 .btn-group button
 {
+	background-color: black;
+	color: white;
 	width: 50%;
 	height: 100%;
 	flex-grow: 1;
@@ -92,6 +109,7 @@ header nav li:left-child
 .btn-group button a
 {
 	text-decoration: none;
+	color: white;
 	display: block;
 	padding-top: 8%;
 	height: 100%;

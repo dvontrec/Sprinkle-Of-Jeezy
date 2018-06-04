@@ -13,8 +13,10 @@ router.get("/", function(req, res){
 		if(err){res.send(err);}
 		else
 		{
-			//sends all events in the database as jason
-			res.json(allQuotes);
+			//generates a random number from 0 till the length of all quotes
+			let rNum = Math.floor(Math.random()*allQuotes.length);
+			//sends the quote at the random index;
+			res.json(allQuotes[rNum]);
 		}
 	})
 });
