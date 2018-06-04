@@ -8,7 +8,7 @@ const middleware = require('../middleware');
 //			AUTH routes
 //=================================
 //register route
-router.get("/register", /*middleware.isAdmin,*/ function(req, res){
+router.get("/register", middleware.isAdmin, function(req, res){
 	res.render("register");
 });
 //register function
