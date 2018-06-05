@@ -1,5 +1,6 @@
 body{
 	margin: 0;
+	font-family: 'Slabo 27px', serif;
 }
 
 header{
@@ -44,6 +45,8 @@ footer a{
 }
 
 #container{
+	text-align: center;
+	padding: 12.5% 0;
 	width: 75%;
 	margin: auto;
 }
