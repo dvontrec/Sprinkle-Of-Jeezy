@@ -80,7 +80,7 @@ footer a{
 	padding: 12.5% 0;
 	width: 75%;
 	margin: auto;
-	margin-bottom: 30px;
+	padding-bottom: 30px;
 }
 /* Mobile device media Queries */
 @media (max-width: 1000px)

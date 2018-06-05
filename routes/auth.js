@@ -8,7 +8,7 @@ const middleware = require('../middleware');
 //			AUTH routes
 //=================================
 //register route
-router.get("/register", middleware.isAdmin, function(req, res){
+router.get("/register", middleware.isLoggedIn, function(req, res){
 	res.render("register");
 });
 //register function
@@ -23,7 +23,7 @@ router.post("/register", function(req, res)
 		{
 			passport.authenticate("local")(req, res, function()
 			{
-				res.redirect("/quotecreator")
+				res.redirect("/")
 			})
 		}
 	})

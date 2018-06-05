@@ -51,7 +51,7 @@ router.post('/confirm/:id', function(req, res)
 					else
 					{
 						console.log("deleted");
-						res.redirect("/api/quotes/asadmin");
+						res.send("Suggestion has been confirmed, need to add flash");
 					}
 				})
 			}
@@ -75,7 +75,7 @@ router.post("/", function(req, res){
 		}
 		else
 		{
-			res.send(newSuggestion);
+			res.send("Suggestion created, need to add flash");
 		}
 	})
 });
@@ -89,7 +89,7 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
 		else
 		{
 			//send the message to let the user know that the qoute was deleted.  
-			res.json({message: "Quote Deleted"});
+			res.send("suggestion deleted need to add flash")
 		}
 	})
 });
