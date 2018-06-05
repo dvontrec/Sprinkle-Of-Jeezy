@@ -7,8 +7,8 @@ const User = require("../models/user");
 const middleware = require("../middleware");
 
 
-//index route
-router.get("/", function(req, res, next){
+//api route
+router.get("/api", function(req, res, next){
 	//send home page as text
 	res.render("index")
 });
@@ -19,8 +19,8 @@ router.get("/quotecreator", middleware.isLoggedIn, function(req, res)
 	res.render("quoteform")
 });
 
-//random quote route
-router.get("/randomquote", function(req, res)
+//random quote route / index
+router.get("/", function(req, res)
 {
 	//makes a variable that stores the path to the random quote html
 	const randomQuoteLocation = path.join(__dirname, "../views/randomQuote.html")

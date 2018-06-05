@@ -1,9 +1,49 @@
 body{
-	
+	margin: 0;
+}
+
+header{
+	background-color: #000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	padding: 0 15px;
+}
+
+header a{
+	text-decoration: none;
+	color: white;
+}
+
+header nav li{
+	padding-right: 15px;
+	list-style: none;
+}
+
+header nav{
+	display: flex;
+	flex-direction: row;
+}
+
+footer{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	min-height: 30px;
+	background-color: #ccc;
+	color: black;
+	text-align: center;
+	padding: auto;
+}
+
+footer a{
+	text-decoration: none;
+	color: black;
 }
 
 #container{
-	width: 70%
+	width: 75%;
 	margin: auto;
-	color: blue;
 }
