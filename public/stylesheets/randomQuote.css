@@ -50,3 +50,14 @@ footer a{
 	width: 75%;
 	margin: auto;
 }
+/* Mobile device media Queries */
+@media (max-width: 1000px)
+{
+	body{
+		font-size: 30px;
+	}
+
+	#container{
+		font-size: 40px;
+	}
+}
