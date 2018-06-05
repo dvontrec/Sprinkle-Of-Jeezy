@@ -15,7 +15,7 @@ header
 	padding: 0 15px;
 }
 
-header h1
+header h2
 {
 	text-align: center
 }
@@ -88,11 +88,11 @@ footer a{
 	{
 		font-size: 18px;
 	}
-	
+
 	header
 	{
-		padding: 20px 50px;
 		flex-direction: column;
 		margin-bottom: 15px;
+		padding: 20px 50px;
 	}
 }
