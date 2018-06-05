@@ -1,10 +1,10 @@
 <% include ./partials/header %>
 
-	<div class="form ">
+	<div class="form all-quote-form">
 		<% quotes.forEach(function(quote){%>
 			<h4><%= quote.quote %></h4>
 			<p>-<%= quote.artist%></p>
-			<button><a href="/api/quotes/<%=quote.id%>">Edit</a></button>
+			<a href="/api/quotes/<%=quote.id%>"><button>Edit</button></a>
 		<% }) %>
 	</div>	
 

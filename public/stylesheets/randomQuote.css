@@ -1,9 +1,12 @@
 body{
 	margin: 0;
 	font-family: 'Slabo 27px', serif;
+	color: rgba(9,9,13,.97);
+	background-color: #ccc;
 }
 
-header{
+header
+{
 	background-color: #000;
 	display: flex;
 	justify-content: space-between;
@@ -12,19 +15,47 @@ header{
 	padding: 0 15px;
 }
 
-header a{
-	text-decoration: none;
-	color: white;
+header h1
+{
+	text-align: center
 }
 
-header nav li{
-	padding-right: 15px;
+header li
+{
 	list-style: none;
 }
 
-header nav{
-	display: flex;
-	flex-direction: row;
+header a
+{
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+header a:hover
+{
+	opacity: 1
+}
+
+header nav
+{
+	display: flex
+}
+
+header nav li
+{
+	margin: 0 15px;
+}
+
+header nav li:first-child
+{
+	margin-left:0;
+}
+
+header nav li:left-child
+{
+	margin-right: 0;
 }
 
 footer{
@@ -33,7 +64,7 @@ footer{
 	bottom: 0;
 	width: 100%;
 	min-height: 30px;
-	background-color: #ccc;
+	background-color: rgb(150,150,150);
 	color: black;
 	text-align: center;
 	padding: auto;
@@ -53,11 +84,15 @@ footer a{
 /* Mobile device media Queries */
 @media (max-width: 1000px)
 {
-	body{
-		font-size: 30px;
+	body
+	{
+		font-size: 18px;
 	}
-
-	#container{
-		font-size: 40px;
+	
+	header
+	{
+		padding: 20px 50px;
+		flex-direction: column;
+		margin-bottom: 15px;
 	}
 }

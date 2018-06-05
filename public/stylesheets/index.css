@@ -132,7 +132,6 @@ footer a{
 
 	body
 	{
-		background-color: #ccc;
 		font-size: 18px;
 	}
 
@@ -166,7 +165,9 @@ footer a{
 	text-transform: uppercase;
 	height: 30px;
 	border: none;
+	text-decoration: none;
 }
+
 
 .quote-form button{
 	background-color: rgb(56, 184, 143);
@@ -198,6 +199,18 @@ footer a{
 .register-form button{
 	background-color: white;
 	color: rgb(9, 270, 105);
+}
+
+.all-quote-form{
+	text-align: center;
+}
+
+.all-quote-form button{
+	margin: auto;
+	width: 50%;
+	background-color: rgb(11,221,183);
+	color: white;
+	text-decoration: none;
 }
 
 
