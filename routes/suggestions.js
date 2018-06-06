@@ -75,7 +75,8 @@ router.post("/", function(req, res){
 		}
 		else
 		{
-			res.send("Suggestion created, need to add flash");
+			req.flash('success', 'Suggestion successfully submitted');
+			res.redirect("/api/suggestions");
 		}
 	})
 });

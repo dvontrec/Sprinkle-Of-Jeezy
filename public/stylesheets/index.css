@@ -147,6 +147,29 @@ footer a{
 	}
 }
 
+/*==============================================
+//   FLASH Styles
+==============================================*/
+.alert{
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: blue;
+    width: 75%;
+    margin: 0 12.5%;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.alert-success{
+	background-color: green;
+}
+
+.alert-danger{
+	background-color: red;
+}
+
+
 
 /*==============================================
 //   FORM Styles

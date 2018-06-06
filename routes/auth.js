@@ -23,7 +23,8 @@ router.post("/register", function(req, res)
 		{
 			passport.authenticate("local")(req, res, function()
 			{
-				res.redirect("/")
+				req.flash('success', `welcome to the back end ${nUser.username}`);
+				res.redirect("/api")
 			})
 		}
 	})
@@ -48,7 +49,9 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res)
 {
 	req.logout();
-	res.redirect("/");
+	req.flash("success", "You have logged out")
+	console.log('logged out');
+	res.redirect("/api");
 });
 
 

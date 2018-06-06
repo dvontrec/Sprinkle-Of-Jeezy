@@ -8,13 +8,25 @@
 </head>
 	<body>
 		<header>
-			<h2><a href="/">Home</a></h2>
+			<h2><a href="/api">Sprinkle of API</a></h2>
 			<nav>
-				<li><a href="/logout">Log Out</a></li>
-				<li><a href="/login">Login</a></li>
-				<li><a href="/register">Register</a></li>
+				<% if(!currentUser) {%>
+					<li><a href="/login">Login</a></li>
+					<li><a href="/register">Register</a></li>
+				<%} else {%>
+					<li> <a href="/"><%= currentUser.username %></a></li>
+					<li><a href="/logout">Log Out</a></li>
+				<% } %>
 			</nav>
 		</header>
+		<div id="flash-container">
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger" role="alert"><%= error %></div>
+            <% } %>
+            <% if(success && success.length > 0){ %>
+                <div class="alert alert-success" role="alert"><%= success %></div>
+            <% } %>
+        </div>
 		<div id="container">
 		
 

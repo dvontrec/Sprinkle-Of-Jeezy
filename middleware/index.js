@@ -13,9 +13,12 @@ middlewareObj.isLoggedIn = function(req, res, next)
 		//moves on to the next function.  usually the callback
 		return next(); 
 	}
-
 	//if the user is not authenticated we will continue.  No need for an else because we return if conditions are met
-	res.redirect("/login");
+	else
+	{
+		req.flash('error', 'You need to be logged in to do that');
+		res.redirect("/login");
+	}
 }
 
 //middleware used to see if the user logged in is an admin
