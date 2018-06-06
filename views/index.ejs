@@ -2,11 +2,15 @@
 
 	<h1 class="index">Sprinkle of jeezy index page</h1>
 	<div class="btn-group">
-		<button><a href="/api/quotes/asadmin">Get Quote</a></button>
-		<button><a href="/quotecreator">Make Quote</a></button>
-		<button><a href="/api/suggestions">Submit Quote</a></button>
+		<% if(!currentUser) {%>
+			<button><a href="/api/suggestions">Submit Quote</a></button>
+		<% } else { %>
+			<button><a href="/api/quotes/asadmin">Get Quote</a></button>
+			<button><a href="/quotecreator">Make Quote</a></button>
+			<button><a href="/api/suggestions/view">View Suggestions</a></button>
+		<% } %>
 		<button><a href="/">Sprinkle</a></button>
-		<button><a href="/api/suggestions/view">View Suggestions</a></button>
+		
 	</div>
 
 <% include ./partials/footer %>
