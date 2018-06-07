@@ -6,6 +6,7 @@ const port = process.env.PORT || 8000;
 const flash = require('connect-flash');
 const passport = require("passport");
 const bodyParser = require("body-parser");
+const expressSanitizer = require('express-sanitizer');
 const User = require("./models/user");
 const localStrategy = require("passport-local");
 const passportlocalMongoose = require("passport-local-mongoose");
@@ -50,6 +51,8 @@ app.use((req, res, next) =>
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+//tells the app to use express sanitizer to escape form content
+app.use(expressSanitizer());
 
 //sets view engine to ejs
 app.set("view engine", "ejs")
@@ -62,7 +65,6 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 //reads the session and unencodes the data
 passport.deserializeUser(User.deserializeUser());
-
 //Sets the app up to see the user ans send flash
 app.use(function(req, res, next)
 {

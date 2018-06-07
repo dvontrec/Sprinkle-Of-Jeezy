@@ -38,13 +38,21 @@ router.get("/asadmin", middleware.isAdmin, function(req, res)
 
 //		CREATE
 router.post("/", middleware.isAdmin, function(req, res){
-	db.Quote.create(req.body, function(err, newQuote){
+	//sanitizes the data from the form submitted by users
+	const quote = req.sanitize(req.body.quote);
+	const artist = req.sanitize(req.body.artist);
+	const song = req.sanitize(req.body.song);
+	//creates an object with the matching pairs
+	const nQuote = { quote, artist, song};
+	db.Quote.create(nQuote, function(err, newQuote){
 		if(err){
-			res.send(err);
+			req.flash('error', err);
+			res.redirect('back');
 		}
 		else
 		{
-			res.redirect("/api/quotes/asadmin");
+			req.flash('success', 'quote successfully submitted');
+			res.redirect('back');
 		}
 	})
 });
@@ -58,14 +66,23 @@ router.get("/:id", middleware.isAdmin, function(req, res){
 
 //		UPDATE
 router.put("/:id", middleware.isAdmin, function(req, res){
+	//sanitizes the data from the form submitted by users
+	const quote = req.sanitize(req.body.quote);
+	const artist = req.sanitize(req.body.artist);
+	const song = req.sanitize(req.body.song);
+	//creates an object with the matching pairs
+	const uQuote = { quote, artist, song};
 	//finds the quote in the database by the id
-	db.Quote.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, updatedQuote){
+	db.Quote.findOneAndUpdate({_id: req.params.id}, uQuote, {new:true}, function(err, updatedQuote){
 		//if there is an error
-		if(err){res.send(err);}
+		if(err){
+			req.flash('flash', err);
+			res.redirect('back');
+		}
 		else
 		{
 			//responds with the updated quote
-			res.json(updatedQuote);
+			res.redirect('back');
 		}
 	})
 });
@@ -75,11 +92,15 @@ router.delete("/:id", middleware.isAdmin, function(req, res){
 	//finds the qupte by the ID in the request
 	db.Quote.remove({_id: req.params.id}, function(err){
 		//if there is an error respond with the error
-		if(err){res.send(err);}
+		if(err){
+			req.flash('error', err);
+			res.redirect('back');
+		}
 		else
 		{
 			//send the message to let the user know that the qoute was deleted.  
-			res.json({message: "Quote Deleted"});
+			req.flash('success', 'Quote successfully deleted');
+			res.redirect('asadmin');
 		}
 	})
 });

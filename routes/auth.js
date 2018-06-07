@@ -38,7 +38,7 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local", 
 	{
 		//if the user successfully logs in redirect to the quote creator route
-		successRedirect: "/",
+		successRedirect: "/api",
 		//if the login is unsuccessfull redirect to the login route
 		failureRedirect: "/login"
 	}), function(req, res)

@@ -9,7 +9,7 @@ var suggestionSchema = mongoose.Schema({
 	//the Suggestion will be a string
 	quote: {
 		type: String,
-		required: "Cannot leave Suggestion Blank"
+		required: "Cannot leave Suggestion Quote Blank"
 	},
 	//the Artists name will be saved as a string
 	artist: {

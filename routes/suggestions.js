@@ -68,10 +68,16 @@ router.get("/", function(req, res)
 
 //		CREATE
 router.post("/", function(req, res){
-	console.log(req.body.artist)
-	db.Suggestion.create(req.body, function(err, newSuggestion){
+	const quote = req.sanitize(req.body.quote);
+	const artist = req.sanitize(req.body.artist);
+	const song = req.sanitize(req.body.song);
+	const suggestion = { quote, artist, song};
+	console.log(suggestion)
+
+	db.Suggestion.create(suggestion, function(err, newSuggestion){
 		if(err){
-			res.send(err);
+			req.flash("error", err.message);
+			res.redirect("back");
 		}
 		else
 		{
@@ -90,7 +96,8 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
 		else
 		{
 			//send the message to let the user know that the qoute was deleted.  
-			res.send("suggestion deleted need to add flash")
+			req.flash('success', "suggestion deleted");
+			res.redirect('back');
 		}
 	})
 });
