@@ -39,14 +39,14 @@ router.get("/asadmin", middleware.isAdmin, function(req, res)
 //		CREATE
 router.post("/", middleware.isAdmin, function(req, res){
 	//sanitizes the data from the form submitted by users
-	const quote = req.sanitize(req.body.quote);
-	const artist = req.sanitize(req.body.artist);
-	const song = req.sanitize(req.body.song);
+	let quote = req.sanitize(req.body.quote);
+	let artist = req.sanitize(req.body.artist);
+	let song = req.sanitize(req.body.song);
 	//creates an object with the matching pairs
-	const nQuote = { quote, artist, song};
+	let nQuote = { quote, artist, song};
 	db.Quote.create(nQuote, function(err, newQuote){
 		if(err){
-			req.flash('error', err);
+			req.flash('error', err.message);
 			res.redirect('back');
 		}
 		else
@@ -67,11 +67,11 @@ router.get("/:id", middleware.isAdmin, function(req, res){
 //		UPDATE
 router.put("/:id", middleware.isAdmin, function(req, res){
 	//sanitizes the data from the form submitted by users
-	const quote = req.sanitize(req.body.quote);
-	const artist = req.sanitize(req.body.artist);
-	const song = req.sanitize(req.body.song);
+	let quote = req.sanitize(req.body.quote);
+	let artist = req.sanitize(req.body.artist);
+	let song = req.sanitize(req.body.song);
 	//creates an object with the matching pairs
-	const uQuote = { quote, artist, song};
+	let uQuote = { quote, artist, song};
 	//finds the quote in the database by the id
 	db.Quote.findOneAndUpdate({_id: req.params.id}, uQuote, {new:true}, function(err, updatedQuote){
 		//if there is an error
@@ -81,8 +81,9 @@ router.put("/:id", middleware.isAdmin, function(req, res){
 		}
 		else
 		{
+			req.flash('success', 'Quote updated');
 			//responds with the updated quote
-			res.redirect('back');
+			res.redirect('/api/quotes/asadmin');
 		}
 	})
 });

@@ -32,6 +32,7 @@ router.post('/confirm/:id', function(req, res)
 {
 	db.Suggestion.findById(req.params.id, function(err, suggestion)
 	{
+		//converts suggestion into a published quote
 		const quote =
 		{ 
 			quote: suggestion.quote,
@@ -50,8 +51,8 @@ router.post('/confirm/:id', function(req, res)
 					if(err){ res.send(err);}
 					else
 					{
-						console.log("deleted");
-						res.send("Suggestion has been confirmed, need to add flash");
+						req.flash('success', "Suggestion has been confirmed");
+						res.redirect('/adminSuggestions');
 					}
 				})
 			}
@@ -68,10 +69,10 @@ router.get("/", function(req, res)
 
 //		CREATE
 router.post("/", function(req, res){
-	const quote = req.sanitize(req.body.quote);
-	const artist = req.sanitize(req.body.artist);
-	const song = req.sanitize(req.body.song);
-	const suggestion = { quote, artist, song};
+	let quote = req.sanitize(req.body.quote);
+	let artist = req.sanitize(req.body.artist);
+	let song = req.sanitize(req.body.song);
+	let suggestion = { quote, artist, song};
 	console.log(suggestion)
 
 	db.Suggestion.create(suggestion, function(err, newSuggestion){
