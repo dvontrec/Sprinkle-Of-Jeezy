@@ -31,7 +31,7 @@ router.get("/asadmin", middleware.isAdmin, function(req, res)
 		}
 		else
 		{
-			res.render("adminQuotes", {quotes: allQuotes});
+			res.render("quotes/adminQuotes", {quotes: allQuotes});
 		}
 	});
 }) 
@@ -60,7 +60,7 @@ router.post("/", middleware.isAdmin, function(req, res){
 router.get("/:id", middleware.isAdmin, function(req, res){
 	//finds the specified quote
 	db.Quote.findById(req.params.id, function(err, quote){
-		res.render("editQuote", {quote: quote})
+		res.render("quotes/editQuote", {quote: quote})
 	})
 })
 

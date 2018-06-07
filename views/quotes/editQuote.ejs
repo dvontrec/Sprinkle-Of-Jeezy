@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 	<form action="/api/quotes/<%= quote._id%>?_method=PUT" method="POST" class="quote-form form">
 		<div class="form-group">
 			<label for="quote">Quote</label>
@@ -19,4 +19,4 @@
 	<form action="/api/quotes/<%= quote.id%>?_method=DELETE" method="POST" class="form delete">
 		<button>delete</button>
 	</form>
-<% include ./partials/footer %>
+<% include ../partials/footer %>

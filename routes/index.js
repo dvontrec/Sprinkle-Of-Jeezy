@@ -16,21 +16,21 @@ router.get("/api", function(req, res, next){
 //checks to see if session is currently logged in.
 router.get("/quotecreator", middleware.isLoggedIn, function(req, res)
 {
-	res.render("quoteform")
+	res.render("quotes/quoteform")
 });
 
 //random quote route / index
 router.get("/", function(req, res)
 {
 	//makes a variable that stores the path to the random quote html
-	const randomQuoteLocation = path.join(__dirname, "../views/randomQuote.html")
+	const randomQuoteLocation = path.join(__dirname, "../views/index/randomQuote.html")
 	res.sendFile(randomQuoteLocation);
 });
 
 router.get("/adminSuggestions", middleware.isLoggedIn,  function(req, res)
 {
 	//makes a variable that stores the path to the random quote html
-	const adminSuggestionLocation = path.join(__dirname, "../views/adminSuggestions.html")
+	const adminSuggestionLocation = path.join(__dirname, "../views/suggestions/adminSuggestions.html")
 	res.sendFile(adminSuggestionLocation);
 })
 

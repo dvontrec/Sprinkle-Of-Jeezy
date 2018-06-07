@@ -64,7 +64,7 @@ router.post('/confirm/:id', function(req, res)
 //		READ
 router.get("/", function(req, res)
 {
-	res.render("quoteSuggester");
+	res.render("suggestions/quoteSuggester");
 });
 
 //		CREATE

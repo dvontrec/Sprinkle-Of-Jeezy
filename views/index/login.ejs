@@ -1,6 +1,7 @@
-<% include ./partials/header %>
-	<h1 class="form-label">Sign up</h1>
-	<form action="/register" method="POST" class="form register-form">
+<% include ../partials/header %>
+
+	<h1 class="form-label">Log IN</h1>
+	<form action="/login" method="POST" class="form login-form">
 		<div class="login-form">
 			<div class="form-group">
 				<label for="username">Username</label>
@@ -11,10 +12,8 @@
 				<input tabindex="2" type="password" name="password" placeholder="password">
 			</div>
 			<div class="form-group">
-				<button tabindex="3">Register</button>
+				<button tabindex="3">Log in</button>
 			</div>
 		</div>
 	</form>
-
-</body>
-</html>
+<% include ../partials/footer %>

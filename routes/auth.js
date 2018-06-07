@@ -9,7 +9,7 @@ const middleware = require('../middleware');
 //=================================
 //register route
 router.get("/register", middleware.isLoggedIn, function(req, res){
-	res.render("register");
+	res.render("index/register");
 });
 //register function
 router.post("/register", function(req, res)
@@ -36,7 +36,7 @@ router.post("/register", function(req, res)
 });
 //login route
 router.get("/login", function(req, res){
-	res.render("login");
+	res.render("index/login");
 });
 //login function
 router.post("/login", passport.authenticate("local", 
