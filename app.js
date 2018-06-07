@@ -49,6 +49,7 @@ app.use((req, res, next) =>
 	next(); //calls next function
 });
 
+//tells the app what parts of body parser to use
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 //tells the app to use express sanitizer to escape form content

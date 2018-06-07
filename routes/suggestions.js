@@ -68,14 +68,8 @@ router.get("/", function(req, res)
 });
 
 //		CREATE
-router.post("/", function(req, res){
-	let quote = req.sanitize(req.body.quote);
-	let artist = req.sanitize(req.body.artist);
-	let song = req.sanitize(req.body.song);
-	let suggestion = { quote, artist, song};
-	console.log(suggestion)
-
-	db.Suggestion.create(suggestion, function(err, newSuggestion){
+router.post("/", middleware.sanitizeBody, function(req, res){
+	db.Suggestion.create(req.body, function(err, newSuggestion){
 		if(err){
 			req.flash("error", err.message);
 			res.redirect("back");

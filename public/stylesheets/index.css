@@ -3,6 +3,7 @@ body
 	margin: 0;
 	background-color: #ccc;
 	color: rgba(9,9,13,.97);
+	font-family: 'Roboto', san-serif;
 }
 
 header
@@ -151,22 +152,26 @@ footer a{
 //   FLASH Styles
 ==============================================*/
 .alert{
-    border: 1px solid transparent;
+    border: 1px solid;
     border-radius: 4px;
-    background-color: blue;
     width: 75%;
-    margin: 0 12.5%;
+    margin: 20px 12.5%;
     margin-bottom: 20px;
     padding: 15px 0;
     text-align: center;
+    font-weight: 700;
 }
 
 .alert-success{
-	background-color: green;
+	background-color: rgba(110, 230, 106, 0.09);
+	color: rgb(60, 160, 40);
+	border: .5px solid rgba(47, 165, 43);
 }
 
 .alert-danger{
-	background-color: red;
+	background-color: rgba(230, 110, 106, .09);
+	color: rgb(160, 40, 60);
+	border: .5px solid rgb(156, 47, 43);
 }
 
 

@@ -37,14 +37,8 @@ router.get("/asadmin", middleware.isAdmin, function(req, res)
 }) 
 
 //		CREATE
-router.post("/", middleware.isAdmin, function(req, res){
-	//sanitizes the data from the form submitted by users
-	let quote = req.sanitize(req.body.quote);
-	let artist = req.sanitize(req.body.artist);
-	let song = req.sanitize(req.body.song);
-	//creates an object with the matching pairs
-	let nQuote = { quote, artist, song};
-	db.Quote.create(nQuote, function(err, newQuote){
+router.post("/", middleware.isAdmin, middleware.sanitizeBody, function(req, res){
+	db.Quote.create(req.body, function(err, newQuote){
 		if(err){
 			req.flash('error', err.message);
 			res.redirect('back');
@@ -65,15 +59,9 @@ router.get("/:id", middleware.isAdmin, function(req, res){
 })
 
 //		UPDATE
-router.put("/:id", middleware.isAdmin, function(req, res){
-	//sanitizes the data from the form submitted by users
-	let quote = req.sanitize(req.body.quote);
-	let artist = req.sanitize(req.body.artist);
-	let song = req.sanitize(req.body.song);
-	//creates an object with the matching pairs
-	let uQuote = { quote, artist, song};
+router.put("/:id", middleware.isAdmin, middleware.sanitizeBody, function(req, res){
 	//finds the quote in the database by the id
-	db.Quote.findOneAndUpdate({_id: req.params.id}, uQuote, {new:true}, function(err, updatedQuote){
+	db.Quote.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, updatedQuote){
 		//if there is an error
 		if(err){
 			req.flash('flash', err);
