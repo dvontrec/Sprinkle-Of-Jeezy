@@ -36,13 +36,17 @@ function setForms(data)
 	data.forEach(function(suggestion){
 		$('#form-list')
 		.append(`
-			<h3>${suggestion.quote}</h3>
-			<form action="/api/suggestions/${suggestion._id}?_method=DELETE" method="POST">
-					<button>Delete</button>
-			</form>
-			<form action="/api/suggestions/confirm/${suggestion._id}" method="POST">
-					<button>confirm</button>
-			</form>`)
+			<div class="suggestion-form">
+				<h3>${suggestion.quote}</h3>
+				<div>
+					<form action="/api/suggestions/${suggestion._id}?_method=DELETE" method="POST">
+							<button>Delete</button>
+					</form>
+					<form action="/api/suggestions/confirm/${suggestion._id}" method="POST">
+							<button>confirm</button>
+					</form>
+				</div>
+			</div>`)
 	});
 	
 }
