@@ -59,20 +59,18 @@ header nav li:left-child
 }
 
 footer{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
+	position: fixed;
 	min-height: 30px;
 	background-color: rgb(150,150,150);
-	color: black;
 	text-align: center;
-	padding: auto;
+	width: 100%;
+	left: 0;
+	bottom: 0;
 }
 
 footer a{
 	text-decoration: none;
-	color: black;
+	color: white;
 }
 
 #container{
