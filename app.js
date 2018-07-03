@@ -94,5 +94,5 @@ app.use("/", indexRoutes);
 //		Add listener
 //********************************
 app.listen(port, function(){
-	console.log("sprinkling on port " + process.env.PORT);
+	console.log("sprinkling on port " + port);
 });
