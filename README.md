@@ -19,7 +19,9 @@ To install you must make sure all dependencies are insttalled.  To do this run "
 Then needs the following environment vars set:
 
 PORT: (enter a 4 digit port number here) Defaults to 8000
+
 SECRET: (enter a string) ex "This is not my secret" <b>Required</b>
+
 DATABASEURL: (enter hosted database here) Defaults to "mongodb://localhost/sprinkle"
 
 ******************************************************************
