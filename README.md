@@ -1,4 +1,4 @@
-# Sprinkle of Jeezy
+# [Sprinkle of Jeezy](https://sprinkle-of-jeezy.herokuapp.com/)
 ******************************************************************
 						Description
 ******************************************************************
@@ -29,6 +29,12 @@ DATABASEURL: (enter hosted database here) Defaults to "mongodb://localhost/sprin
 ******************************************************************
 To run the project run "npm start"
 
+******************************************************************
+						Important notes
+******************************************************************
+In order to add or delete quotes you must be logged in.  If you are using the code louisville build authentication is disabled.  You will automatically be given the abilty to perform these tasks.  
+
+If you are a guest you can suggest new quotes via the backend y clicking the suggest quotes button.  
 
 
 
