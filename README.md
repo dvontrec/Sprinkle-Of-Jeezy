@@ -1,10 +1,11 @@
-Random Rap Quote Generator
+# Sprinkle of Jeezy
 ******************************************************************
-						Description
+##						Description
 ******************************************************************
 
 This is a parody API that spits out the rap quotes from a mongodb database. 
 
 ******************************************************************
-						How to run
+##						How to run
 ******************************************************************
+
