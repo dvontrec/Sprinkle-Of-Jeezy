@@ -3,7 +3,7 @@
 						Description
 ******************************************************************
 
-ME-N stack application that displays rap quotes from a backend MONGO database. None registered users can also submit suggestion quotes that can be added after review.  
+ME_N stack application that displays rap quotes from a backend MONGO database. None registered users can also submit suggestion quotes that can be added after review.  
 
 ******************************************************************
 						Prerequisite
