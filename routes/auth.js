@@ -8,7 +8,7 @@ const middleware = require('../middleware');
 //			AUTH routes
 //=================================
 //register route
-router.get("/register", middleware.isLoggedIn, function(req, res){
+router.get("/register", function(req, res){
 	res.render("index/register");
 });
 //register function
