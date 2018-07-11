@@ -34,7 +34,7 @@ To run the project run "npm start"
 ******************************************************************
 In order to add or delete quotes you must be logged in.  If you are using the code louisville build authentication is disabled.  You will automatically be given the abilty to perform these tasks.  
 
-If you are a guest you can suggest new quotes via the backend y clicking the suggest quotes button.  
+If you are a guest you can suggest new quotes via the backend by clicking the submit quotes button.  
 
 
 

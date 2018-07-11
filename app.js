@@ -2,7 +2,8 @@
 //		Basic Variables
 //********************************
 const express = require("express");
-const port = process.env.PORT || 8000;
+require('dotenv').config();
+const port = process.env.PORT || 5005;
 const flash = require('connect-flash');
 const passport = require("passport");
 const bodyParser = require("body-parser");
