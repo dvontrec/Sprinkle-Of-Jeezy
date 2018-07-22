@@ -15,7 +15,7 @@ ME_N stack application that displays rap quotes from a backend MONGO database. N
 ******************************************************************
 						Initial Setup
 ******************************************************************
-To install you must make sure all dependencies are insttalled.  To do this run "npm install"
+To install you must make sure all dependencies are installed.  To do this run "npm install"
 The .env file can be recieved by emailing dvontrec@gmail.com or contacting me via slack.  
 
 ******************************************************************
