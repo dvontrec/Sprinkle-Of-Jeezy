@@ -23,7 +23,9 @@ The .env file can be recieved by emailing dvontrec@gmail.com or contacting me vi
 ******************************************************************
 To run the project run "npm start"
 
-******************************************************************
+The Landing page will display random quotes along with the artists.  You can clicking the "New Quote" button.  The meat of the project is located in the "Back End".  There users can submit quotes or login/register.  New users must register which gives access to edit the quotes by clicking the "Get Quote" button. You can also accept or delete suggestions put in by guests.  
+
+ ******************************************************************
 						Important notes
 ******************************************************************
 In order to add or delete quotes you must be logged in.  If you are using the code louisville build authentication is disabled for the registration route.  This means locally anyone can register as a new user. 
