@@ -1,4 +1,4 @@
-//creates an object to store the middleware functions
+// creates an object to store the middleware functions
 var middlewareObj = {};
 
 //********************************
