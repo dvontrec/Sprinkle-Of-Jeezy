@@ -23,7 +23,10 @@ var quoteSchema = mongoose.Schema({
 	pronunciation: {
 		type: String
 	},
-	artistDescriptor: Array
+	artistDescriptor: {
+		type: String,
+		default: 'Urban philosopher'
+	}
 });
 
 //turns the schema to a model
