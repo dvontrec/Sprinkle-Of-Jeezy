@@ -21,9 +21,7 @@ var quoteSchema = mongoose.Schema({
 		required: 'Cannot leave Song Blank'
 	}, //may change to link.
 	pronunciation: {
-		type: String,
-		required: 'Please Add pronunciation so home devices can acces this.',
-		default: this.quote
+		type: String
 	},
 	artistDescriptor: Array
 });
