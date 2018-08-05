@@ -26,7 +26,8 @@ var quoteSchema = mongoose.Schema({
 	artistDescriptor: {
 		type: String,
 		default: 'Urban philosopher'
-	}
+	},
+	trackURI: String
 });
 
 //turns the schema to a model
