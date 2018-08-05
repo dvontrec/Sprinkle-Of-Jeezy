@@ -19,7 +19,13 @@ var quoteSchema = mongoose.Schema({
 	song: {
 		type: String,
 		required: 'Cannot leave Song Blank'
-	} //may change to link.
+	}, //may change to link.
+	pronunciation: {
+		type: String,
+		required: 'Please Add pronunciation so home devices can acces this.',
+		default: this.quote
+	},
+	artistDescriptor: Array
 });
 
 //turns the schema to a model
