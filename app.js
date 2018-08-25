@@ -8,6 +8,7 @@ const express = require('express');
 const port = process.env.PORT || 8000;
 const flash = require('connect-flash');
 const passport = require('passport');
+const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const User = require('./models/user');
@@ -17,15 +18,25 @@ const quoteRoutes = require('./routes/quotes');
 const authRoutes = require('./routes/auth');
 const suggestRoutes = require('./routes/suggestions');
 const indexRoutes = require('./routes/index');
+const spotifyRoutes = require('./routes/spotify');
 const methodOverride = require('method-override');
 const middleware = require('./middleware');
 const app = express();
 
+require('./services/passport');
 //tells application what packages to use
 //tells app to pull files from public directory
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
-
+//Allows the application to use spotify authentication
+app.use(
+	cookieSession({
+		name: 'Spotify User',
+		maxAge: 60 * 60 * 1000, //saves the cookie for 60 minutes in an hour 60 seconds in a minute 1000 milliseconds in a second
+		// encrypts the cookie
+		keys: [process.env.COOKIE_KEY_1]
+	})
+);
 //tells app to use _method for method-override
 app.use(methodOverride('_method'));
 //tells app to use express session
@@ -85,6 +96,7 @@ app.use(function(req, res, next) {
 app.use('/api/quotes', quoteRoutes);
 app.use('/', authRoutes);
 app.use('/api/suggestions', suggestRoutes);
+app.use('/api/spotify', spotifyRoutes);
 app.use('/', indexRoutes);
 
 //********************************
