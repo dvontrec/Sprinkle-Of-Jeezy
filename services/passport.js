@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const SpotifyStrategy = require('passport-spotify').Strategy;
 const Guest = require('../models/guest');
 
-const mongoURL = process.env.DBURL || 'mongodb://localhost/hello-spotify';
+const mongoURL = process.env.DATABASEURL || 'mongodb://localhost/hello-spotify';
 
 mongoose.connect(mongoURL);
 // Passport session setup.
@@ -34,7 +34,7 @@ passport.use(
 		},
 		async (accessToken, refreshToken, expires_in, profile, done) => {
 			// Finds the existing user and deletes it
-			const existingUser = await Guest.findOneAndDelete({
+			const existingUser = await Guest.remove({
 				spotifyId: profile.id
 			});
 			const user = await new Guest({
