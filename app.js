@@ -2,6 +2,8 @@
 //		Basic Variables
 //********************************
 require('dotenv').config();
+// imports a class that extends the string prototype so colors can be added to the console.
+const colors = require('colors');
 const express = require('express');
 const port = process.env.PORT || 8000;
 const flash = require('connect-flash');
@@ -89,5 +91,5 @@ app.use('/', indexRoutes);
 //		Add listener
 //********************************
 app.listen(port, function() {
-	console.log('sprinkling on port ' + port);
+	console.log(`sprinkling on port ' + ${port}`.cyan);
 });
