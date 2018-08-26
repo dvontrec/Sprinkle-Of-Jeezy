@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 const { Schema } = mongoose;
 
 const guestSchema = new Schema({
@@ -8,5 +9,5 @@ const guestSchema = new Schema({
 	accessToken: String,
 	refreshToken: String
 });
-
+guestSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('Guest', guestSchema);

@@ -11,6 +11,22 @@ router.get('/', (req, res) => {
 	res.render('spotify-test');
 });
 
+router.post('play/:uri', (req, res) => {
+	if (!req.user) {
+		res.redirect('/auth/spotify');
+	}
+	spotifyApi.setAccessToken(req.user.accessToken);
+	spotifyApi.play(
+		{
+			uris: [req.params.uri]
+		},
+		(err, resp) => {
+			if (err) {
+				console.log(err);
+			}
+		}
+	);
+});
 router.get(
 	'/auth',
 	passport.authenticate('spotify', {
@@ -39,10 +55,6 @@ router.get(
 
 router.get('/wrong', (req, res) => {
 	res.send('Cannot login bro');
-});
-
-router.get('/current_guest', (req, res) => {
-	res.send('working');
 });
 
 module.exports = router;

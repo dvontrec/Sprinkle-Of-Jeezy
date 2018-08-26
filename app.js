@@ -12,7 +12,9 @@ const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const User = require('./models/user');
+const Guest = require('./models/guest');
 const localStrategy = require('passport-local');
+const SpotifyStrategy = require('passport-spotify').Strategy;
 const passportlocalMongoose = require('passport-local-mongoose');
 const quoteRoutes = require('./routes/quotes');
 const authRoutes = require('./routes/auth');
@@ -23,7 +25,7 @@ const methodOverride = require('method-override');
 const middleware = require('./middleware');
 const app = express();
 
-require('./services/passport');
+// require('./services/passport');
 //tells application what packages to use
 //tells app to pull files from public directory
 app.use(express.static(__dirname + '/public'));
@@ -77,10 +79,40 @@ app.use(passport.initialize());
 app.use(passport.session());
 //creates a new local strategy
 passport.use(new localStrategy(User.authenticate()));
+passport.use(
+	new SpotifyStrategy(
+		{
+			clientID: process.env.CLIENT_ID,
+			clientSecret: process.env.CLIENT_SECRET,
+			callbackURL: '/api/spotify/auth/callback'
+		},
+		async (accessToken, refreshToken, expires_in, profile, done) => {
+			// Finds the existing user and deletes it
+			const existingUser = await Guest.remove({
+				spotifyId: profile.id
+			});
+			const user = await new Guest({
+				name: profile.displayName,
+				profilePic: profile.photos[0],
+				spotifyId: profile.id,
+				accessToken: accessToken,
+				refreshToken: refreshToken
+			}).save();
+			done(null, user);
+		}
+	)
+);
 //encodes data and puts it in the session
 passport.serializeUser(User.serializeUser());
 //reads the session and unencodes the data
 passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+	done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+	done(null, user);
+});
 //Sets the app up to see the user ans send flash
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
