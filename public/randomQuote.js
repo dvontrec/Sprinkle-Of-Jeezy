@@ -18,6 +18,9 @@ function getQuote(data) {
 	document.getElementById('text').textContent = data.quote;
 	document.getElementById('artist').textContent = data.artist;
 	console.log(data);
+	if (!data.trackURI) {
+		document.querySelector('#playButton').style.display = 'none';
+	}
 	uri = data.trackURI;
 }
 
