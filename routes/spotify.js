@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 	res.render('spotify-test');
 });
 
-router.post('play/:uri', (req, res) => {
+router.post('/play/:uri', (req, res) => {
 	if (!req.user) {
 		res.redirect('/auth/spotify');
 	}
@@ -24,6 +24,7 @@ router.post('play/:uri', (req, res) => {
 			if (err) {
 				console.log(err);
 			}
+			res.send('working');
 		}
 	);
 });

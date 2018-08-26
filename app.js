@@ -103,9 +103,9 @@ passport.use(
 	)
 );
 //encodes data and puts it in the session
-passport.serializeUser(User.serializeUser());
+// passport.serializeUser(User.serializeUser());
 //reads the session and unencodes the data
-passport.deserializeUser(User.deserializeUser());
+// passport.deserializeUser(User.deserializeUser());
 passport.serializeUser(function(user, done) {
 	done(null, user);
 });

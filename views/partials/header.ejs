@@ -11,7 +11,7 @@
 		<header>
 			<h2><a href="/api">Sprinkle of API</a></h2>
 			<nav>
-				<% if(!currentUser) {%>
+				<% if(!currentUser.salt) {%>
 					<li><a href="/login">Login</a></li>
 					<li><a href="/register">Register User</a></li>
 				<%} else {%>
