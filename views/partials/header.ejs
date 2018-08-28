@@ -13,10 +13,10 @@
 			<nav>
 				<% if(!currentUser || !currentUser.salt) {%>
 					<li><a href="/login">Login</a></li>
-					<li><a href="/register">Register User</a></li>
 				<%} else {%>
 					<li> <a href="/"><%= currentUser.username %></a></li>
 					<li><a href="/logout">Log Out</a></li>
+					<li><a href="/register">Register User</a></li>
 				<% } %>
 			</nav>
 		</header>
