@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "passport-local": "1.0.0",
     "passport-local-mongoose": "5.0.0",
     "passport-spotify": "1.0.1",
-    "spotify-web-api-node": "^4.0.0"
+    "spotify-web-api-node": "^4.0.0",
+    "nodemon": "1.18.3"
   }
 }
