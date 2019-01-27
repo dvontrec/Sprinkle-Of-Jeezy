@@ -137,11 +137,8 @@ if (process.env.NODE_ENV === 'development') {
 //		Routes
 //********************************
 //use routes with specific path
-app.use('/api/quotes', quoteRoutes);
-app.use('/', authRoutes);
-app.use('/api/suggestions', suggestRoutes);
-app.use('/api/spotify', spotifyRoutes);
-app.use('/', indexRoutes);
+app.use('/', quoteRoutes);
+app.use('/suggestions', suggestRoutes);
 
 //********************************
 //		Add listener

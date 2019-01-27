@@ -9,7 +9,7 @@ const middleware = require('../middleware');
 //=================================
 //register route
 router.get('/register', middleware.isAdmin, function(req, res) {
-  res.render('index/register');
+  // res.render('index/register');
 });
 //register function
 router.post('/register', middleware.isAdmin, function(req, res) {
@@ -37,7 +37,7 @@ router.post(
   '/login',
   passport.authenticate('local', {
     //if the user successfully logs in redirect to the quote creator route
-    successRedirect: '/api',
+    successRedirect: '/',
     //if the login is unsuccessfull redirect to the login route
     failureRedirect: '/login'
   }),
@@ -49,7 +49,7 @@ router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success', 'You have logged out');
   console.log('logged out');
-  res.redirect('/api');
+  res.redirect('/');
 });
 
 module.exports = router;
