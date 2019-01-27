@@ -15,14 +15,9 @@ const User = require('./models/user');
 const Guest = require('./models/guest');
 const localStrategy = require('passport-local');
 const SpotifyStrategy = require('passport-spotify').Strategy;
-const passportlocalMongoose = require('passport-local-mongoose');
 const quoteRoutes = require('./routes/quotes');
-const authRoutes = require('./routes/auth');
 const suggestRoutes = require('./routes/suggestions');
-const indexRoutes = require('./routes/index');
-const spotifyRoutes = require('./routes/spotify');
 const methodOverride = require('method-override');
-const middleware = require('./middleware');
 const seedDB = require('./seeds');
 const app = express();
 
