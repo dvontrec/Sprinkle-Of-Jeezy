@@ -23,6 +23,7 @@ const indexRoutes = require('./routes/index');
 const spotifyRoutes = require('./routes/spotify');
 const methodOverride = require('method-override');
 const middleware = require('./middleware');
+const seeds = require('./seeds');
 const app = express();
 
 // require('./services/passport');
@@ -123,6 +124,13 @@ app.use(function(req, res, next) {
   res.locals.success = req.flash('success');
   next();
 });
+
+//********************************
+//		DEV stuff
+//********************************
+if (process.env.NODE_ENV === 'development') {
+  console.log('Running in development'.yellow);
+}
 
 //********************************
 //		Routes
